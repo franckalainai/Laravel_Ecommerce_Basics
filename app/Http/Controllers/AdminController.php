@@ -15,11 +15,6 @@ class AdminController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
 
-            $validatedData = $request->validate([
-                'email' => ['required', 'unique:users', 'max:255'],
-                'password' => ['required'],
-            ]);
-
             if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin' => '1'])){
                 return redirect('/admin/dashboard');
             }else{
@@ -27,7 +22,9 @@ class AdminController extends Controller
             }
         }
 
-        return view('admin.admin_login');
+
+
+        return view('admin.admin_login')->with('flash_message_success', 'Login Successfully');
     }
 
     public function dashboard(){
