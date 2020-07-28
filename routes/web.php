@@ -18,7 +18,10 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::match(['get', 'post'] ,'/', 'AdminController@login');
     Route::get('/dashboard', 'AdminController@dashboard');
+
 });
+
+Route::get('/logout', 'AdminController@logout');
 
 Auth::routes();
 

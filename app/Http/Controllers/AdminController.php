@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 
-use Validator;
+use Session;
 
 class AdminController extends Controller
 {
@@ -24,10 +24,15 @@ class AdminController extends Controller
 
 
 
-        return view('admin.admin_login')->with('flash_message_success', 'Login Successfully');
+        return view('admin.admin_login')->with('flash_message_success', 'Logged in Successfully');
     }
 
     public function dashboard(){
         return view('admin.dashboard');
+    }
+
+    public function logout(){
+        Session::flush();
+        return redirect('/admin')->with('flash_message_success', 'Logged out Successfully');
     }
 }
