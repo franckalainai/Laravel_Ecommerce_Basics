@@ -25,17 +25,34 @@
 
 @include('layouts.adminLayout.admin_footer')
 
-<script src="{{ asset('js/backend_js/jquery.min.js') }}"></script> 
-<script src="{{ asset('js/backend_js/jquery.ui.custom.js') }}"></script> 
-<script src="{{ asset('js/backend_js/bootstrap.min.js') }}"></script> 
-<script src="{{ asset('js/backend_js/jquery.uniform.js') }}"></script> 
-<script src="{{ asset('js/backend_js/select2.min.js') }}"></script> 
-<script src="{{ asset('js/backend_js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/backend_js/jquery.validate.js') }}"></script> 
-<script src="{{ asset('js/backend_js/matrix.js') }}"></script> 
-<script src="{{ asset('js/backend_js/matrix.form_validation.js') }}"></script>
+<script src="{{ asset('js/backend_js/jquery.min.js') }} "></script>
+<!-- <script src="{{ asset('js/backend_js/jquery.ui.custom.js') }} "></script> -->
+<script src="{{ asset('js/backend_js/bootstrap.min.js') }} "></script>
+<script src="{{ asset('js/backend_js/jquery.uniform.js') }} "></script>
+<script src="{{ asset('js/backend_js/select2.min.js') }} "></script>
+<script src="{{ asset('js/backend_js/jquery.validate.js') }} "></script>
+<script src="{{ asset('js/backend_js/jquery.dataTables.min.js') }} "></script>
+<script src="{{ asset('js/backend_js/matrix.js') }} "></script>
+<script src="{{ asset('js/backend_js/matrix.form_validation.js') }} "></script>
 <script src="{{ asset('js/backend_js/matrix.tables.js') }}"></script>
 <script src="{{ asset('js/backend_js/matrix.popover.js') }}"></script>
+<script src="{{ asset('js/backend_js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/backend_js/wysihtml5-0.3.0.js') }}"></script>
+<script src="{{ asset('js/backend_js/bootstrap-wysihtml5.js') }}"></script>
+<script>
+	$('.textarea_editor').wysihtml5();
+	$('.textarea_care').wysihtml5();
+</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- <script src="{{ asset('js/app.js') }}"></script> -->
+<script>
+    $(function(){
+        $("#expiry_date").datepicker({
+            minDate: 0,
+            dateFormat: 'yy-mm-dd'
+        });
+    });
+</script>
 
 </body>
 </html>
