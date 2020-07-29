@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', 'AdminController@dashboard');
     Route::get('/settings', 'AdminController@settings');
     Route::get('/check-pwd', 'AdminController@chkPassword');
+    Route::match(['get', 'post'], '/update-pwd', 'AdminController@updatePassword');
     });
 });
 
