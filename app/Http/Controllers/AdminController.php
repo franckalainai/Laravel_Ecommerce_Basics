@@ -16,6 +16,7 @@ class AdminController extends Controller
             $data = $request->input();
 
             if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin' => '1'])){
+                /*Session::put('adminSession', $data['email']);*/
                 return redirect('/admin/dashboard');
             }else{
                 return redirect('/admin')->with('flash_message_error','Invalid Email or Password');
@@ -28,11 +29,20 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
+        /*if(Session::has('adminSession')){
+
+        }else{
+            return redirect('/admin')->with('flash_message_error', 'please login to access');
+        }*/
         return view('admin.dashboard');
     }
 
     public function logout(){
         Session::flush();
         return redirect('/admin')->with('flash_message_success', 'Logged out Successfully');
+    }
+
+    public function settings(){
+        return view('admin.settings');
     }
 }

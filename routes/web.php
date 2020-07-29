@@ -15,11 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::match(['get', 'post'] ,'/', 'AdminController@login');
-    Route::get('/dashboard', 'AdminController@dashboard');
 
+Route::match(['get', 'post'] ,'/admin', 'AdminController@login');
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', 'AdminController@dashboard');
+    Route::get('/settings', 'AdminController@settings');
+    });
 });
+
 
 Route::get('/logout', 'AdminController@logout');
 
