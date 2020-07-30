@@ -48,4 +48,11 @@ class CategoryController extends Controller
         $categoryDetails = category::where(['id' => $id])->first();
         return view('admin.categories.edit_category')->with(compact('categoryDetails'));
     }
+
+    public function deleteCategory($id = null){
+        if(!empty($id)){
+            Category::where(['id' => $id])->delete();
+            return redirect()->back()->with('flash_message_success', 'Category deleted Successfully');
+        }
+    }
 }
