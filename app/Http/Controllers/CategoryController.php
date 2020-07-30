@@ -30,4 +30,9 @@ class CategoryController extends Controller
         $categories = Category::get();
         return view('admin.categories.view_categories')->with(compact('categories'));
     }
+
+    public function editCategory(Request $request, $id = null){
+        $categoryDetails = category::where(['id' => $id])->first();
+        return view('admin.categories.edit_category')->compact('categoryDetails');
+    }
 }

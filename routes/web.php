@@ -23,9 +23,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', 'AdminController@dashboard');
     Route::get('/settings', 'AdminController@settings');
     Route::get('/check-pwd', 'AdminController@chkPassword');
+
+    // categories routes admin
     Route::match(['get', 'post'], '/update-pwd', 'AdminController@updatePassword');
     Route::match(['get', 'post'], '/add-category', 'CategoryController@addCategory');
     Route::get('/view-categories', 'CategoryController@viewCategories');
+    Route::match(['get', 'post'], 'edit-category/{id}', 'CategoryController@editCategory');
     });
 });
 
