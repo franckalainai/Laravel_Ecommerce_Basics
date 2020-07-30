@@ -32,7 +32,20 @@ class CategoryController extends Controller
     }
 
     public function editCategory(Request $request, $id = null){
+
+        if($request->isMethod('post')){
+            $data = $request->all();
+            //echo '<pre>'; print_r($data); die;
+            Category::where(['id' => $id])
+            ->update(['name' => $data['category_name'],
+            'description' => $data['description'],
+            'url' => $data['url']]);
+
+            return redirect('/admin/view-categories')->with('flash_message_success', 'Category updated successfully');
+
+        }
+
         $categoryDetails = category::where(['id' => $id])->first();
-        return view('admin.categories.edit_category')->compact('categoryDetails');
+        return view('admin.categories.edit_category')->with(compact('categoryDetails'));
     }
 }
