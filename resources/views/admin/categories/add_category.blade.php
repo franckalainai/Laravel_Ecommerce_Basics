@@ -5,6 +5,12 @@
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Categories</a> <a href="#" class="current">Add Category</a> </div>
     <h1>Categories</h1>
+    @if(Session::has('flash_message_success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{!! session('flash_message_success') !!}</strong>
+        </div>
+    @endif
   </div>
   <div class="container-fluid"><hr>
     <div class="row-fluid">
@@ -14,7 +20,8 @@
             <h5>Add Category</h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="{{ url('/admin/add-category') }}" name="add_category" id="add_category" novalidate="novalidate"> {{ csrf_field() }}
+            <form class="form-horizontal" method="post" action="{{ url('/admin/add-category') }}" name="add_category" id="add_category" novalidate="novalidate">
+            {{ csrf_field() }}
               <div class="control-group">
                 <label class="control-label">Category Name</label>
                 <div class="controls">
@@ -26,9 +33,7 @@
                 <div class="controls">
                   <select name="parent_id" style="width: 220px;">
                     <option value="0">Main Category</option>
-                    @foreach($levels as $val)
-                      <option value="{{ $val->id }}">{{ $val->name }}</option>
-                    @endforeach
+
                   </select>
                 </div>
               </div>
