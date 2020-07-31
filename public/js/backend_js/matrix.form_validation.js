@@ -99,7 +99,7 @@ $(document).ready(function(){
 				number:true
 			},
 			image:{
-				required:true,
+				required:false,
 			}
 		},
 		errorClass: "help-inline",
